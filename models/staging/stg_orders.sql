@@ -15,6 +15,13 @@ customer_address as (
     from  {{ ref('raw_customers') }}
 )
 
+customer_address as (
+    select
+        id,
+        address,
+    from  {{ ref('raw_customers') }}
+)
+
 renamed as (
 
     select
