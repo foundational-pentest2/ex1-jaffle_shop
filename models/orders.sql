@@ -49,7 +49,7 @@ final as (
 
         order_payments.total_amount as amount
 
-        customers.address as shipping_address
+        customers.default_shipping_address as shipping_address
 
     from orders
 
