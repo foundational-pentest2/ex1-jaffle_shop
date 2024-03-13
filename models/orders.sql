@@ -4,11 +4,11 @@ with orders as (
     select * from {{ ref('stg_orders') }}
 ),
 
-with payments as (
+payments as (
     select * from {{ ref('stg_payments') }}
 ),
 
-with customer as (
+customer as (
     select * from {{ ref('stg_customers') }}
 )
 
@@ -47,6 +47,7 @@ final as (
     from orders
     left join order_payments
         on ( orders.order_id = order_payments.order_id )
+
     left join customers
         on ( orders.customer_id = customers.customer_id )
 )
