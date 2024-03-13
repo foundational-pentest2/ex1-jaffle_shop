@@ -36,13 +36,13 @@ final as (
         orders.customer_id,
         orders.order_date,
         orders.status,
-        customers.default_shipping_address as shipping_address
+        customers.default_shipping_address as shipping_address,
 
         {% for payment_method in payment_methods -%}
         order_payments.{{ payment_method }}_amount,
         {% endfor -%}
 
-        order_payments.total_amount as amount,
+        order_payments.total_amount as amount
 
     from orders
     left join order_payments
