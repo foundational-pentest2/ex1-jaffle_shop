@@ -47,7 +47,7 @@ final as (
 
         {% endfor -%}
 
-        order_payments.total_amount as amount
+        order_payments.total_amount as amount,
 
         customers.default_shipping_address as shipping_address
 
