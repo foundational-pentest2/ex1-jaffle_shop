@@ -43,13 +43,16 @@ final as (
 
         {% endfor -%}
 
-        order_payments.total_amount as amount
+        order_payments.total_amount as amount,
+        customers.address as shipping_address
 
     from orders
 
 
     left join order_payments
         on orders.order_id = order_payments.order_id
+    left join customers
+        on orders.customer_id = customers.customer_id
 
 )
 
