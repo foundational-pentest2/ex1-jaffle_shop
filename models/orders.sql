@@ -1,11 +1,5 @@
 {% set payment_methods = ['credit_card', 'coupon', 'bank_transfer', 'gift_card'] %}
 
-with orders as (
-
-    select * from {{ ref('stg_orders') }}
-
-),
-
 payments as (
 
     select * from {{ ref('stg_payments') }}
@@ -15,6 +9,12 @@ payments as (
 customer as (
     select * from {{ ref('stg_customers') }}
 )
+
+with orders as (
+
+    select * from {{ ref('stg_orders') }}
+
+),
 
 order_payments as (
 
@@ -52,10 +52,8 @@ final as (
         customers.default_shipping_address as shipping_address
 
     from orders
-
     left join order_payments
         on orders.order_id = order_payments.order_id
-
     left join customers
         on orders.customer_id = customers.customer_id
 
