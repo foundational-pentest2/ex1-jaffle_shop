@@ -1,18 +1,24 @@
 {% set payment_methods = ['credit_card', 'coupon', 'bank_transfer', 'gift_card'] %}
 
 with orders as (
+
     select * from {{ ref('stg_orders') }}
+
 ),
 
 payments as (
+
     select * from {{ ref('stg_payments') }}
+
 ),
 
 customer as (
+
     select * from {{ ref('stg_customers') }}
+
 )
 
-with order_payments as (
+order_payments as (
 
     select
         order_id,
