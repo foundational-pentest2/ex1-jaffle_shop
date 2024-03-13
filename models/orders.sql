@@ -36,6 +36,7 @@ final as (
         orders.customer_id,
         orders.order_date,
         orders.status,
+        orders.address as shipping_address,
 
         {% for payment_method in payment_methods -%}
 
