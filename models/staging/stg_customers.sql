@@ -14,7 +14,7 @@ renamed as (
         id as customer_id,
         first_name,
         last_name,
-        address as default_shipping_address
+        address
 
     from source
 
