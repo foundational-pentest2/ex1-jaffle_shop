@@ -12,6 +12,12 @@ with payments as (
 
 ),
 
+customer as (
+
+    select * from {{ ref('stg_customers') }}
+
+)
+
 with order_payments as (
 
     select
@@ -39,9 +45,7 @@ with final as (
         customers.address as shipping_address,
 
         {% for payment_method in payment_methods -%}
-
         order_payments.{{ payment_method }}_amount,
-
         {% endfor -%}
 
         order_payments.total_amount as amount
@@ -54,7 +58,6 @@ with final as (
 
     left join customers
         on orders.customer_id = customers.customer_id
-
 )
 
 select * from final
