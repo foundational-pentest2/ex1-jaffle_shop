@@ -55,7 +55,8 @@ final as (
         customer_orders.first_order,
         customer_orders.most_recent_order,
         customer_orders.number_of_orders,
-        customer_payments.total_amount as customer_lifetime_value
+        customer_payments.total_amount as customer_lifetime_value,
+        customer_payments.total_amount as customer_lifetime_value_test2
 
     from customers
 
