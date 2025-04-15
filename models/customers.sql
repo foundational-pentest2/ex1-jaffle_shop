@@ -24,7 +24,8 @@ with customer_orders as (
         min(order_date) as first_order,
         max(order_date) as most_recent_order,
         count(order_id) as number_of_orders,
-        count(order_id) as number_of_orders_com_test
+        count(order_id) as number_of_orders_com_test,
+        count(order_id) as number_of_orders_com_test2
     from orders
 
     group by customer_id
@@ -54,9 +55,7 @@ final as (
         customers.last_name,
         customer_orders.first_order,
         customer_orders.most_recent_order,
-        customer_orders.number_of_orders,
-        customer_payments.total_amount as customer_lifetime_value,
-        customer_payments.total_amount as customer_lifetime_value_test2
+        customer_orders.number_of_orders
 
     from customers
 
